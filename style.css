@@ -263,3 +263,194 @@ h1 {
 	transition: width 0.2s, height 0.2s, background-color 0.5s, border-color 0.5s;
 	z-index: 9999;
 }
+
+.grid-3d-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    perspective: 800px;
+    opacity: 0.2;
+}
+
+.grid-3d {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background:
+        linear-gradient(var(--accent-color) 1px, transparent 1px) 0 0,
+        linear-gradient(90deg, var(--accent-color) 1px, transparent 1px) 0 0;
+    background-size: 40px 40px;
+    transform-style: preserve-3d;
+    transform: rotateX(75deg) translateZ(-100px);
+    animation: grid-move 10s linear infinite;
+}
+
+@keyframes grid-move {
+    0% {
+        transform: rotateX(75deg) translateZ(-100px) translate(0, 0);
+    }
+
+    100% {
+        transform: rotateX(75deg) translateZ(-100px) translate(-100px, -100px);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 2px 2px var(--highlight-color), -2px -2px var(--shadow-color);
+    }
+
+    25% {
+        text-shadow: -2px 2px var(--highlight-color), 2px -2px var(--shadow-color);
+    }
+
+    50% {
+        text-shadow: 2px -2px var(--highlight-color), -2px 2px var(--shadow-color);
+    }
+
+    75% {
+        text-shadow: -2px -2px var(--highlight-color), 2px 2px var(--shadow-color);
+    }
+
+    100% {
+        text-shadow: 2px 2px var(--highlight-color), -2px -2px var(--shadow-color);
+    }
+}
+
+.glitch {
+    animation: glitch 0.3s infinite;
+}
+
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    opacity: 0;
+    animation: glitch-screen 0.4s ease-in-out infinite;
+    display: none;
+}
+
+@keyframes glitch-screen {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.1;
+    }
+
+    25% {
+        transform: translate(-5px, 5px);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(5px, -5px);
+        opacity: 0.2;
+    }
+
+    75% {
+        transform: translate(-3px, 3px);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.1;
+    }
+}
+
+.glitch-overlay.active {
+    display: block;
+}
+
+.screen-tear {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.05) 0,
+            rgba(255, 255, 255, 0.05) 2px,
+            transparent 2px,
+            transparent 4px);
+    opacity: 0;
+    animation: screen-tear-animation 0.4s ease-in-out infinite;
+    display: none;
+}
+
+@keyframes screen-tear-animation {
+    0% {
+        transform: translateY(0);
+        opacity: 0.1;
+    }
+
+    25% {
+        transform: translateY(-5px);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(5px);
+        opacity: 0.2;
+    }
+
+    75% {
+        transform: translateY(-3px);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0.1;
+    }
+}
+
+.screen-tear.active {
+    display: block;
+}
+
+.page-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.05) 0,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px,
+            transparent 20px);
+    z-index: -1;
+    opacity: 0.1;
+    animation: page-background-animation 5s linear infinite;
+}
+
+@keyframes page-background-animation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100px;
+    }
+}
+
+html,
+body {
+    overflow: hidden;
+    height: 100%;
+}
