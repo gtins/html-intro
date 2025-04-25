@@ -1,0 +1,25 @@
+.grid-3d-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    perspective: 800px;
+    opacity: 0.2;
+}
+
+.grid-3d {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: linear-gradient(var(--accent-color) 1px, transparent 1px) 0 0,
+                linear-gradient(90deg, var(--accent-color) 1px, transparent 1px) 0 0;
+    background-size: 40px 40px;
+    transform-style: preserve-3d;
+    transform: rotateX(75deg) translateZ(-100px);
+    animation: grid-move 10s linear infinite;
+}
