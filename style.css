@@ -23,3 +23,16 @@
     transform: rotateX(75deg) translateZ(-100px);
     animation: grid-move 10s linear infinite;
 }
+
+.nav-button {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transform: translateZ(20px);
+    transition: transform 0.3s ease;
+}
+
+.nav-button:hover {
+    transform: translateZ(40px);
+}
