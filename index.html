@@ -3,34 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coder Portfolio</title>
+    <title>Portfolio</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Gustavo Martins</h1>
-        <p>Software Engeneering Student, QA Analyst and aspiring Back-end developer.</p>
+    <div class="cursor" id="cursor"></div>
+    <div class="grid-3d-container">
+        <div class="grid-3d" id="grid"></div>
     </div>
-    <div class="nav">
-        <button class="nav-button" data-nav="projects">PROJECTS</button>
-        <button class="nav-button" data-nav="skills">SKILLS</button>
-        <button class="nav-button" data-nav="about">ABOUT</button>
-        <button class="nav-button" data-nav="contact">CONTACT</button>
-        <button class="nav-button" data-nav="github">GITHUB</button>
+
+    <!-- Main Container -->
+    <div class="container" id="container">
+        <div class="header">
+            <h1>Gustavo Martins</h1>
+            <div class="subtitle">Software Engeneering Student, QA Analyst and aspiring back-end developer.
+                Creating elegant solutions for complex problems.</div>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item">
+                <button class="nav-button" data-nav="projects">PROJECTS</button>
+            </div>
+
+            <div class="nav-item">
+                <button class="nav-button" data-nav="skills">SKILLS</button>
+            </div>
+
+            <div class="nav-item">
+                <button class="nav-button" data-nav="about">ABOUT</button>
+            </div>
+
+            <div class="nav-item">
+                <button class="nav-button" data-nav="contact">CONTACT</button>
+            </div>
+
+            <div class="nav-item">
+                <button class="nav-button" data-nav="github">GITHUB</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 • Built out of boredom and necessity
+        </div>
     </div>
+
+    <!-- Projects -->
     <div id="projects-page" class="page-content">
-        <h2>Projects</h2>
+        <div class="grid-3d-container">
+            <div class="grid-3d"></div>
+        </div>
+        <button class="back-button">← BACK</button>
+        <h2 class="page-title">PROJECTS</h2>
+        <p class="page-description">Explore my projects and applications</p>
+        <div class="menu-grid">
+            <div class="menu-card" data-page="placeholder1">
+                <h3>PLACEHOLDER1</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder2">
+                <h3>PLACEHOLDER2</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder3">
+                <h3>PLACEHOLDER3</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder4">
+                <h3>PLACEHOLDER4</h3>
+                <p>Text</p>
+            </div>
+        </div>
     </div>
-    <div id="skills-page" class="page-content">
-        <h2>Skills</h2>
-    </div>
+
+    <!-- About -->
     <div id="about-page" class="page-content">
-        <h2>About</h2>
+        <div class="grid-3d-container">
+            <div class="grid-3d"></div>
+        </div>
+        <button class="back-button">← BACK</button>
+        <h2 class="page-title">ABOUT</h2>
+        <p class="page-description">My academic and professional background</p>
+        <div class="menu-grid">
+            <div class="menu-card" data-page="placeholder4">
+                <h3>PLACEHOLDER1</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder5">
+                <h3>Experience/h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder6">
+                <h3>Education</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder7">
+                <h3>PLACEHOLDER2</h3>
+                <p>Text</p>
+            </div>
+        </div>
     </div>
+
+    <!-- Skills -->
+    <div id="skills-page" class="page-content">
+        <div class="grid-3d-container">
+            <div class="grid-3d"></div>
+        </div>
+        <button class="back-button">← BACK</button>
+        <h2 class="page-title">SKILLS</h2>
+        <p class="page-description">Technical expertise and professional capabilities</p>
+        <div class="menu-grid">
+            <div class="menu-card" data-page="placeholder8">
+                <h3>Testing</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder9">
+                <h3>Backend</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder10">
+                <h3>PLACEHOLDER1</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder11">
+                <h3>PLACEHOLDER2</h3>
+                <p>Text</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
     <div id="contact-page" class="page-content">
-        <h2>Contact</h2>
+        <div class="grid-3d-container">
+            <div class="grid-3d"></div>
+        </div>
+        <button class="back-button">← BACK</button>
+        <h2 class="page-title">CONTACT</h2>
+        <p class="page-description">Get in touch for collaborations and opportunities</p>
+        <div class="menu-grid">
+            <div class="menu-card" data-page="email">
+                <h3>Email</h3>
+                <p>Direct messages for professional inquiries</p>
+            </div>
+            <div class="menu-card" data-page="social">
+                <h3>LinkedIn</h3>
+                <p>Connect with me!</p>
+            </div>
+        </div>
     </div>
+
+    <!-- GitHub -->
     <div id="github-page" class="page-content">
-        <h2>GitHub</h2>
+        <div class="grid-3d-container">
+            <div class="grid-3d"></div>
+        </div>
+        <button class="back-button">← BACK</button>
+        <h2 class="page-title">GITHUB</h2>
+        <p class="page-description">Explore my code and open source contributions</p>
+        <div class="menu-grid">
+            <div class="menu-card" data-page="placeholder12">
+                <h3>PLACEHOLDER1</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder13">
+                <h3>PLACEHOLDER2</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder14">
+                <h3>PLACEHOLDER3</h3>
+                <p>Text</p>
+            </div>
+            <div class="menu-card" data-page="placeholder15">
+                <h3>PLACEHOLDER4</h3>
+                <p>Text</p>
+            </div>
+        </div>
     </div>
-</body>
+
+    <div class="glitch-overlay"></div>
+    <div class="screen-tear"></div>
 </html>

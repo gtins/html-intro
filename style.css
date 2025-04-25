@@ -1,38 +1,265 @@
-.grid-3d-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    perspective: 800px;
-    opacity: 0.2;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Courier New', monospace;
+	transition: color 0.5s, background-color 0.5s;
 }
 
-.grid-3d {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: linear-gradient(var(--accent-color) 1px, transparent 1px) 0 0,
-                linear-gradient(90deg, var(--accent-color) 1px, transparent 1px) 0 0;
-    background-size: 40px 40px;
-    transform-style: preserve-3d;
-    transform: rotateX(75deg) translateZ(-100px);
-    animation: grid-move 10s linear infinite;
+:root {
+	--bg-color: #000;
+	--text-color: #fff;
+	--accent-color: rgba(255, 255, 255, 0.3);
+	--highlight-color: rgba(255, 255, 255, 0.8);
+	--shadow-color: rgba(0, 0, 0, 0.8);
+	--button-light: rgba(255, 255, 255, 0.9);
+	--button-dark: rgba(255, 255, 255, 0.2);
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow-x: hidden;
+	position: relative;
+	perspective: 800px;
+}
+
+.container {
+	max-width: 1200px;
+	padding: 2rem;
+	z-index: 10;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.3s ease;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 4rem;
+	transform-style: preserve-3d;
+}
+
+h1 {
+	font-size: 3.5rem;
+	margin-bottom: 1rem;
+	letter-spacing: 2px;
+	transform: translateZ(60px);
+	transition: transform 0.3s ease;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.subtitle {
+	font-size: 1.2rem;
+	font-weight: normal;
+	opacity: 0.8;
+	max-width: 600px;
+	margin: 0 auto;
+	transform: translateZ(30px);
+	transition: transform 0.3s ease;
+}
+
+.nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 3rem;
+	transform-style: preserve-3d;
+}
+
+.nav-item {
+	position: relative;
+	transform-style: preserve-3d;
+	perspective: 500px;
 }
 
 .nav-button {
-    background-color: var(--accent-color);
-    border: none;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    transform: translateZ(20px);
-    transition: transform 0.3s ease;
+	position: relative;
+	background: none;
+	color: var(--text-color);
+	font-size: 1.1rem;
+	padding: 0.8rem 1.5rem;
+	cursor: pointer;
+	z-index: 1;
+	transform-style: preserve-3d;
+	transform: translateZ(40px) rotateX(5deg);
+	transition: transform 0.2s ease;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+	background-color: var(--accent-color);
+	border: none;
+	box-shadow:
+		inset 4px 4px 0 var(--button-light),
+		inset -4px -4px 0 var(--shadow-color),
+		4px 4px 0 var(--shadow-color);
 }
 
 .nav-button:hover {
-    transform: translateZ(40px);
+	transform: translateZ(60px) rotateX(0deg) scale(1.05);
+	box-shadow:
+		inset 4px 4px 0 var(--button-light),
+		inset -4px -4px 0 var(--shadow-color),
+		6px 6px 0 var(--shadow-color);
+}
+
+.nav-button:active {
+	transform: translateZ(30px) rotateX(10deg);
+	box-shadow:
+		inset 3px 3px 0 var(--shadow-color),
+		inset -3px -3px 0 var(--button-light),
+		2px 2px 0 var(--shadow-color);
+}
+
+.page-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--bg-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+	transform: translateZ(0);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s, visibility 0.3s;
+	perspective: 800px;
+}
+
+.page-content.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	margin-bottom: 2rem;
+	letter-spacing: 1px;
+	transform: translateZ(40px);
+	text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.page-description {
+	font-size: 1.1rem;
+	max-width: 600px;
+	text-align: center;
+	margin-bottom: 3rem;
+	transform: translateZ(20px);
+}
+
+.back-button {
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+	background-color: var(--accent-color);
+	border: none;
+	color: var(--text-color);
+	font-size: 1rem;
+	padding: 0.6rem 1.2rem;
+	cursor: pointer;
+	transform: translateZ(20px);
+	box-shadow:
+		inset 3px 3px 0 var(--button-light),
+		inset -3px -3px 0 var(--shadow-color),
+		3px 3px 0 var(--shadow-color);
+	transition: all 0.2s ease;
+}
+
+.back-button:hover {
+	transform: translateZ(30px) scale(1.05);
+	box-shadow:
+		inset 3px 3px 0 var(--button-light),
+		inset -3px -3px 0 var(--shadow-color),
+		5px 5px 0 var(--shadow-color);
+}
+
+.back-button:active {
+	transform: translateZ(15px);
+	box-shadow:
+		inset 2px 2px 0 var(--shadow-color),
+		inset -2px -2px 0 var(--button-light),
+		1px 1px 0 var(--shadow-color);
+}
+
+.menu-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	max-width: 800px;
+	width: 100%;
+	transform-style: preserve-3d;
+}
+
+.menu-card {
+	padding: 2rem;
+	text-align: center;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 180px;
+	transform-style: preserve-3d;
+	transform: translateZ(20px);
+	transition: all 0.3s ease;
+	background-color: var(--accent-color);
+	box-shadow:
+		inset 4px 4px 0 var(--button-light),
+		inset -4px -4px 0 var(--shadow-color),
+		5px 5px 0 var(--shadow-color);
+}
+
+.menu-card:hover {
+	transform: translateZ(40px) translateY(-5px);
+	box-shadow:
+		inset 4px 4px 0 var(--button-light),
+		inset -4px -4px 0 var(--shadow-color),
+		8px 8px 0 var(--shadow-color);
+}
+
+.menu-card:active {
+	transform: translateZ(15px) translateY(2px);
+	box-shadow:
+		inset 3px 3px 0 var(--shadow-color),
+		inset -3px -3px 0 var(--button-light),
+		2px 2px 0 var(--shadow-color);
+}
+
+.menu-card h3 {
+	margin-bottom: 1rem;
+	font-size: 1.3rem;
+	transform: translateZ(10px);
+}
+
+.menu-card p {
+	font-size: 0.9rem;
+	opacity: 0.8;
+}
+
+.footer {
+	margin-top: 4rem;
+	opacity: 0.6;
+	font-size: 0.8rem;
+	text-align: center;
+	transform: translateZ(15px);
+	transition: transform 0.3s ease;
+}
+
+.cursor {
+	position: fixed;
+	width: 20px;
+	height: 20px;
+	border: 1px solid var(--text-color);
+	border-radius: 50%;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	transition: width 0.2s, height 0.2s, background-color 0.5s, border-color 0.5s;
+	z-index: 9999;
 }
